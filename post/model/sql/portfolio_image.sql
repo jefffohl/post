@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS portfolioimage;
+
+CREATE TABLE portfolioimage (
+	id INT NOT NULL AUTO_INCREMENT,
+	imageurl TEXT,
+	date_modified TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	date_posted TIMESTAMP NOT NULL DEFAULT 0,
+	portfolioid INT NOT NULL,
+	CONSTRAINT portfolioimage_ibfk_1 FOREIGN KEY (portfolioid) REFERENCES portfolio(id),
+	PRIMARY KEY (id)
+)ENGINE = InnoDB;
