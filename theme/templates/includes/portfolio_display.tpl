@@ -11,7 +11,7 @@
 		</div>
 		<div class="thumbnails">
 			{foreach from=$portfolio.images item="image"}
-				{if isset($image.thumbnail)}
+				{if !empty($image.thumbnail)}
 				<div class="thumbnail">
 				<img id="thumbnail_{$image.id}" src="{$image.thumbnail}" />
 				</div>
