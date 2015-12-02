@@ -2,7 +2,6 @@
 function addImage() {
 	var newItem = "<div>" +
 						"<table>" +
-							"<input type='hidden' name='imageIDs[]' value=''>" +
 							"<tr>" +
 								"<th>" +
 									"<label>Image URL: </label>" +
