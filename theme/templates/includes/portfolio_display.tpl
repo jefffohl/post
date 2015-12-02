@@ -9,6 +9,7 @@
 			<p class="categories">Categories: {foreach name="categories" from=$categories key="key" item="category"}<a href="{$SERVERINFO.PHP_SELF}?portfoliocategory={$category}{if (isset($_GET.view))}&view={$_GET.view}{/if}">{$category}</a>{if !$smarty.foreach.categories.last}, {/if}{/foreach}</p>
 			{$portfolio.body}
 		</div>
+		{if count($portfolio.images) > 1}
 		<div class="thumbnails">
 			{foreach from=$portfolio.images item="image"}
 				{if !empty($image.thumbnail)}
@@ -18,6 +19,7 @@
 				{/if}
 			{/foreach}
 		</div>
+		{/if}
 		<div id="current-image-description">
 			{if isset($portfolio.images[0].description)}{$portfolio.images[0].description}{/if}
 		</div>
