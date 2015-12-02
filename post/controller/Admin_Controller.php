@@ -242,7 +242,9 @@ class Admin_Controller {
 	public function createPortfolio() {
 		global $smarty;
 		if (isset($_POST['title'])) {
-			$this->portfolioObj->createPortfolio($_POST['title'],$_POST['thumbnail'],$_POST['body'],$_POST['categories'],$_POST['images']);
+			$portfolioName = $this->createPortfolioName($_POST['title']);
+			$thumbnail = $this->fileUpload->upload($portfolioName, $_FILES['portfolio_thumbnail'])[0];
+			$this->portfolioObj->createPortfolio($_POST['title'],$thumbnail,$_POST['body'],$_POST['categories'],$_POST['images']);
 			/* cleanse the $_POST array */
 			header("Location: ".$_SERVER['PHP_SELF']."?view=saved");
 			
@@ -282,15 +284,23 @@ class Admin_Controller {
 			return$smarty->fetch('view_portfolios.tpl');
 		}
 	}
+
+	public function createPortfolioName($title) {
+		// strip out all whitespace
+		$portfolioName = preg_replace('/\s*/', '', $title);
+		// convert the string to all lowercase
+		$portfolioName = strtolower($portfolioName);
+		return $portfolioName;
+	}
 	
 	public function editPortfolio() {
 		global $smarty;
 		if (isset($_POST['saveid']) && !empty($_POST['title'])) {
-			// strip out all whitespace
-			$portfolioName = preg_replace('/\s*/', '', $_POST['title']);
-			// convert the string to all lowercase
-			$portfolioName = strtolower($portfolioName);
-			
+			$portfolioName = $this->createPortfolioName($_POST['title']);
+			$thumbnail = $_POST['thumbnail'];
+			if (!empty($_FILES['portfolio_thumbnail']['name'][0])) {
+				$thumbnail = $this->fileUpload->upload($portfolioName, $_FILES['portfolio_thumbnail'])[0];
+			}
 			// roll up the existing images
 			$existing_images = array();
 			foreach($_POST['existing_images'] as $key=>$value) {
@@ -315,7 +325,7 @@ class Admin_Controller {
 				$new_images[$key] = array("imageurl" => $value, "thumbnail" => $new_thumbnails[$key], "description" => $_POST["new_descriptions"][$key]);
 			}
 
-			$this->portfolioObj->editPortfolio($_POST['title'],$_POST['thumbnail'],$_POST['body'],$_POST['categories'],$existing_images,$new_images,$_POST['saveid']);
+			$this->portfolioObj->editPortfolio($_POST['title'],$thumbnail,$_POST['body'],$_POST['categories'],$existing_images,$new_images,$_POST['saveid']);
 			/* cleanse the $_POST array */
 			header("Location: ".$_SERVER['PHP_SELF']."?view=saved");
 		}

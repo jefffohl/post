@@ -36,7 +36,7 @@ function addImage() {
 			<div class="new_post">
 			<form method="post" action=".?view=editportfolio" enctype="multipart/form-data"> 
 			  <div><label for="title">Title: </label><input type="text" id="title" name="title" value="{$portfolio.title}" /></div>
-			  <div><label for="thumbnail">Thumbnail: </label><input type="text" id="thumbnail" name="thumbnail" value="{$portfolio.thumbnail}" /></div>
+			  <div><label for="thumbnail">Thumbnail: </label><img src="{$portfolio.thumbnail}" width="100" /><input type="hidden" name="thumbnail" value="{$portfolio.thumbnail}" /><input type='file' name='portfolio_thumbnail[]' /></div>
 			  <div><label for="categories">Categories: </label><input type="text" id="categories" name="categories" value="{$portfolio.categories}" /></div>
 			  <div><label for="body">Body: </label><textarea id="body" name="body">{$portfolio.body}</textarea></div>
 			  <script type="text/javascript">CKEDITOR.replace( 'body' );</script>

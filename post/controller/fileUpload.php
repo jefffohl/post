@@ -35,7 +35,6 @@
 		}
 
 		public function upload($portfolioName, $files) {
-			echo "calling fileUpload()";
 			$portfolioPath = __DIR__ . "/../../portfolios";
 			if (!file_exists($portfolioPath)) {
 				mkdir($portfolioPath);
@@ -46,7 +45,6 @@
 			}
 			$target_dir = $target_dir . "/";
 			$path = "/portfolios/" . $portfolioName . "/";
-			//echo "<pre>"; print_r($_FILES["images"]); echo "</pre>";
 			return $this->processFiles($files, $target_dir, $path);
 		}
 	}
