@@ -5,6 +5,7 @@
 			<p class="date-posted">{$post.date_posted|date_format:"%B %e, %Y @ %l:%M %p"}</p>
 			<div class="post-body">{$post.body}</div>
 		</div>	
+		{*
 		<div class="comments">
 					<h4>Comments</h4>
 					{if $loggedin !== true}
@@ -31,4 +32,5 @@
 					</form>
 		</div>
 		{/if}
+		*}
 	</div>
