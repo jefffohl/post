@@ -4,7 +4,7 @@ function addImage() {
 						"<table>" +
 							"<tr>" +
 								"<th>" +
-									"<label>Image URL: </label>" +
+									"<label>Image: </label>" +
 								"</th>" +
 								"<td>" +
 									"<input type='file' name='new_images[]' />" +
@@ -12,7 +12,7 @@ function addImage() {
 							"</tr>" +
 							"<tr>" +
 								"<th>" +
-									"<label>Thumbnail URL: </label>" +
+									"<label>Thumbnail: </label>" +
 								"</th>" +
 								"<td>" +
 									"<input type='file' name='new_thumbnails[]'>" +
@@ -50,7 +50,7 @@ function addImage() {
 					  		<label for="image_{$item.id}">Image: </label>
 					  	</th>
 					  	<td>
-					  		{if !empty($item.thumbnail)}<img src="{$item.imageurl}" width="100">{/if}
+					  		{if !empty($item.imageurl)}<img src="{$item.imageurl}" width="100">{/if}
 					  	</td>
 					  	<td>
 					  		<input type='file' name='existing_images[{$item.id}]' />
