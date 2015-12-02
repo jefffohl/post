@@ -7,3 +7,10 @@
 {/block}
 </div>
 {/block}
+{block name="footer"}
+	<footer>      
+            <div class="contact narrow">
+            	{include file="contact.tpl"}
+            </div>
+    </footer>
+{/block}

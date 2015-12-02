@@ -47,9 +47,11 @@
 		{/block}
 		</div>
 		{block name="footer"}
-		<div id="footer">
-			{block name="footer_content"}{/block}
-		</div>
+		<footer>      
+            <div class="contact">
+            	{include file="contact.tpl"}
+            </div>
+    	</footer>
 		{/block}
 	</div>
 </body>

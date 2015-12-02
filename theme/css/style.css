@@ -678,3 +678,50 @@ ul.content-page-menu li.current-page a {
 .post-header .inner .admin-buttons a.button {
 	border-radius:3px;
 }
+
+footer {
+	padding-top:20px;
+	color:#999;
+}
+
+footer a.powered-by-post {
+	display:inline-block;
+	width:206px;
+	height:58px;
+	background-image:url(/theme/images/powered_by_post.png);
+	background-repeat:no-repeat;
+	background-position:0 0;
+	text-indent:-20000px;
+}
+
+footer a.powered-by-post:hover {
+	background-position:0 -61px;
+}
+
+footer div.copyright {
+	float:left;
+	width:25%;
+	box-sizing:border-box;
+}
+
+/* contact */
+
+.contact.narrow {
+	width:700px;
+	margin:auto;
+}
+
+.contact ul, .contact li {
+	list-style:none;
+	padding:0;
+	margin:0;
+}
+
+.contact ul li {
+	padding:10px 0;
+	border-bottom:solid 1px rgba(255,255,255,0.1);
+}
+
+.contact ul li:last-child {
+	border-bottom:none;
+}
