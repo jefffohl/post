@@ -13,6 +13,8 @@ class Account_Controller {
 	//TODO: This needs to be cleaned up:
 	public function execute() {
 		if (!$this->isLoggedIn()) {
+			return $this->logIn();
+			/*
 			if ($_GET['view'] == 'register') {
 				return $this->register();
 			}
@@ -20,7 +22,7 @@ class Account_Controller {
 				return $this->forgotpassword();
 			} else {
 				return $this->logIn();
-			}
+			}*/
 		} else {
 			if (isset($_GET['action'])) {
 				switch ($_GET['action']) {
@@ -28,8 +30,8 @@ class Account_Controller {
 						return $this->logOut();
 					case "login" :
 						return $this->logIn();
-					case "register" :
-						return $this->register();
+					//case "register" :
+					//	return $this->register();
 					default :
 						return $this->editAccount();
 				}
@@ -149,7 +151,7 @@ class Account_Controller {
 			return $smarty->fetch('register.tpl');
 		}
 	}
-	
+	/*
 	public function forgotpassword() {
 		global $smarty;
 		if($_GET['view'] == "passwordretrieved") {
@@ -174,4 +176,5 @@ class Account_Controller {
 				}
 		}
 	}
+	*/
 }

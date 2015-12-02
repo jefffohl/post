@@ -2,13 +2,14 @@
 
 
 class User_Model extends PostDatabase {
-	
+
+	private $passwordProxy = "*****";
 	
 	public function login($username,$password) {
 			$params = array();
 			$params['username'] = $username;
-			$params['password'] = $password;
-			$query = "SELECT * FROM users WHERE username=:username AND password=:password";
+			//$params['password'] = $password;
+			$query = "SELECT * FROM users WHERE username=:username";
 			$statement = $this->dbHandle->prepare($query);
 			$statement->execute($params);
 			if (1 !== $statement->rowCount()) {
@@ -16,12 +17,17 @@ class User_Model extends PostDatabase {
 			}
 			$statement->setFetchMode(PDO::FETCH_ASSOC);
 			$result = $statement->fetch();
-			$this->updateSession($result);
-			return true;
+			if ($this->checkPassword($password, $result['password'])) {
+				$this->updateSession($result);
+				return true;	
+			} else {
+				return false;
+			}
+
 	}
 	
 	public function getUsers($page) {
-		return $this->pagedQuery($page,10,'users','id','asc');
+		return $this->pagedQuery($page,10,'users','id','asc','firstname,lastname,username,email,class,id');
 	}
 	
 	public function delete($userID) {
@@ -38,6 +44,14 @@ class User_Model extends PostDatabase {
 		$_SESSION['username'] = $user['username'];
 		$_SESSION['class'] = $user['class'];
 		$_SESSION['id'] = $user['id'];
+	}
+
+	public function encryptPassword($password) {
+		return password_hash($password, PASSWORD_DEFAULT);
+	}
+
+	public function checkPassword($password, $hash) {
+		return password_verify($password, $hash);
 	}
 	
 	public function createAccount($firstname,$lastname,$username,$email,$password,$commentsNotification) {
@@ -57,7 +71,7 @@ class User_Model extends PostDatabase {
 		$params['lastname'] = $lastname;
 		$params['username'] = $username;
 		$params['email'] = $email;
-		$params['password'] = $password;
+		$params['password'] = $this->encryptPassword($password);
 		$params['commentsNotification'] = $commentsNotification;
 		$params['class'] = 'User';
 		$query = "INSERT INTO users (firstname,lastname,username,email,password,commentsNotification,class) VALUES (:firstname,:lastname,:username,:email,:password,:commentsNotification,:class)";
@@ -91,10 +105,16 @@ class User_Model extends PostDatabase {
 		$params['lastname'] = $lastname;
 		$params['username'] = $username;
 		$params['email'] = $email;
-		$params['password'] = $password;
+		if ($password !== $this->passwordProxy) {
+			$params['password'] = $this->encryptPassword($password);
+		}
 		$params['commentsNotification'] = $commentsNotification;
 		$params['id'] = $id;
-		$query = "UPDATE users SET firstname=:firstname, lastname=:lastname, username=:username, email=:email, password=:password,commentsNotification=:commentsNotification WHERE id=:id";
+		if ($password !== $this->passwordProxy) {
+			$query = "UPDATE users SET firstname=:firstname, lastname=:lastname, username=:username, email=:email, password=:password,commentsNotification=:commentsNotification WHERE id=:id";
+		} else {
+			$query = "UPDATE users SET firstname=:firstname, lastname=:lastname, username=:username, email=:email, commentsNotification=:commentsNotification WHERE id=:id";
+		}
 		$statement = $this->dbHandle->prepare($query);
 		$statement->execute($params);
 		/* update the session to reflect any changed data */
@@ -107,6 +127,7 @@ class User_Model extends PostDatabase {
 		$statement->setFetchMode(PDO::FETCH_ASSOC);
 		$result = $statement->fetch();
 		if ($statement->rowCount() == 1) {
+			$result['password'] = $this->passwordProxy;
 			$this->updateSession($result);
 			return "Your account has been updated.";
 		}
@@ -120,11 +141,18 @@ class User_Model extends PostDatabase {
 		$params['firstname'] = $firstname;
 		$params['lastname'] = $lastname;
 		$params['email'] = $email;
-		$params['password'] = $password;
+		if ($password !== $this->passwordProxy) {
+			$params['password'] = $this->encryptPassword($password);
+		}
 		$params['commentsNotification'] = $commentsNotification;
 		$params['id'] = $id;
 		$params['class'] = $class;
-		$query = "UPDATE users SET firstname=:firstname,lastname=:lastname,email=:email,password=:password,commentsNotification=:commentsNotification, class=:class WHERE id=:id";
+		if ($password !== $this->passwordProxy) {
+			$query = "UPDATE users SET firstname=:firstname,lastname=:lastname,email=:email,password=:password,commentsNotification=:commentsNotification, class=:class WHERE id=:id";
+		} else {
+			$query = "UPDATE users SET firstname=:firstname,lastname=:lastname,email=:email,commentsNotification=:commentsNotification, class=:class WHERE id=:id";
+		}
+
 		$statement = $this->dbHandle->prepare($query);
 		$statement->execute($params);
 	}
@@ -138,8 +166,9 @@ class User_Model extends PostDatabase {
 		$statement->setFetchMode(PDO::FETCH_ASSOC);
 		$result = $statement->fetch();
 		if (1 !== $statement->rowCount()) {
-				return false;
-			}
+			return false;
+		}
+		$result['password'] = $this->passwordProxy;
 		return $result;
 	}
 	
@@ -167,7 +196,7 @@ class User_Model extends PostDatabase {
 		// Send
 		mail(ADMIN_EMAIL, 'New User on Post', $message);
 	}
-	
+	/*
 	public function retrievePassword($username) {
 		$params = array();
 		$params['username'] = $username;
@@ -188,6 +217,7 @@ If you feel this was done in error, please contact the administrator at ".ADMIN_
 		mail($result['email'], 'Password retrieval from '.BLOG_TITLE, $message);
 		return true;
 	}
+	*/
 	
 }
 

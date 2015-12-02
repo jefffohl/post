@@ -5,8 +5,4 @@
 			<label for="password">Password</label><input type="password" name="password" /><br />
 			<input type="submit" value="Login" />
 		</form>
-		<p>Not registered?<br />
-		<a href=".?view=register">Register here &raquo;</a></p>
-		<p>Forgot your password?<br />
-		<a href=".?view=forgotpassword">Click here to have it emailed to you &raquo;</a></p>
 </div>

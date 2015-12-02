@@ -6,7 +6,6 @@
 				<th>First Name</th>
 				<th>Last Name</th>
 				<th>Username</th>
-				<th>Password</th>
 				<th>Email</th>
 				<th>Class</th>
 				<th></th>
@@ -16,7 +15,6 @@
 				<td>{$user.firstname}</td>
 				<td>{$user.lastname}</td>
 				<td><a href=".?view=edituser&userid={$user.id}">{$user.username}</a></td>
-				<td>{$user.password}</td>
 				<td>{$user.email}</td>
 				<td>{$user.class}</td>
 				<td><a class="button" href=".?action=delete&module=user&title={$user.firstname}&id={$user.id}">Delete</a></td>

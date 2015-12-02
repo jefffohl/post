@@ -125,7 +125,7 @@ CREATE TABLE `users` (
   `firstname` varchar(64) NOT NULL,
   `lastname` varchar(64) NOT NULL,
   `username` varchar(64) NOT NULL,
-  `password` varchar(32) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `email` varchar(64) NOT NULL,
   `class` varchar(32) NOT NULL,
   `commentsNotification` tinyint(1) NOT NULL DEFAULT '0',

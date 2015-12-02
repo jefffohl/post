@@ -59,7 +59,7 @@ class PostDatabase {
 	}
 	
 	/* returns a paged result set, and sets $this->pages to the number of total pages in the result */
-	protected function pagedQuery($page = null, $size, $table, $sort, $order) {
+	protected function pagedQuery($page = null, $size, $table, $sort, $order, $fields="*") {
 	    $offset = ($page - 1) * $size;
 		$params = array();
 		$params['offset'] = $offset;
@@ -67,7 +67,8 @@ class PostDatabase {
 		$params['table'] = $table;
 		$params['sort'] = $sort;
 		$params['order'] = $order;
-		$statement = $this->dbHandle->prepare("SELECT * FROM {$params['table']} ORDER BY {$params['sort']} {$params['order']} LIMIT {$params['offset']}, {$params['size']}");   			
+		$statementString = "SELECT " .$fields . " FROM {$params['table']} ORDER BY {$params['sort']} {$params['order']} LIMIT {$params['offset']}, {$params['size']}";
+		$statement = $this->dbHandle->prepare($statementString);   			
 	    $statement->execute();
 		$total = 0;
 		$items = array();
