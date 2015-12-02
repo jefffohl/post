@@ -34,8 +34,7 @@ class Portfolio_Model extends PostDatabase {
 	
 	/* edit portfolio */
 	
-	public function editPortfolio($title=null,$thumbnail=null,$body=null,$categories=null,$images=null,$image_thumbnails=null,$image_descriptions=null,$imageIDs=null,$saveid) {
-		
+	public function editPortfolio($title=null,$thumbnail=null,$body=null,$categories=null,$existing_images=null,$new_images=null,$saveid) {
 		$params = array();
 		$params['title'] = $title;
 		$params['thumbnail'] = $thumbnail;
@@ -45,31 +44,14 @@ class Portfolio_Model extends PostDatabase {
 		$params['saveid'] = (integer)$saveid;
 		$statement = $this->dbHandle->prepare("UPDATE portfolio SET title=:title, thumbnail=:thumbnail, body=:body, categories=:categories WHERE id=:saveid");
 		$statement->execute($params);
-		// merge the imageIDs and images into one array
-		if ($images != null) {
-			$portfolioImages = array();
-			for($i=0;$i<count($images);$i++) {
-				$portfolioImages[] = array(
-				'id' => $imageIDs[$i],
-				'imageurl' => $images[$i],
-				'thumbnail' => $image_thumbnails[$i],
-				'description' => $image_descriptions[$i]
-				);
-			}
-			foreach ($portfolioImages as $key=>$value) {
-				// if this is a new image, it will have no ID
-				if (empty($value['id'])) {
-					$newImage = array();
-					$newImage['imageurl'] = $value['imageurl'];
-					$newImage['thumbnail'] = $value['thumbnail'];
-					$newImage['description'] = $value['description'];
-					$this->savePortfolioImage($saveid,$newImage);
-				// else, we update data on existing images:
-				} else {
-					$imageStatement = $this->dbHandle->prepare("UPDATE portfolioimage SET imageurl=:imageurl, thumbnail=:thumbnail, description=:description WHERE id=:id");
-					$imageStatement->execute($value);
-				}
-			}
+		// existing images
+		foreach ($existing_images as $oldKey=>$oldImage) {
+			$imageStatement = $this->dbHandle->prepare("UPDATE portfolioimage SET imageurl=:imageurl, thumbnail=:thumbnail, description=:description WHERE id=:id");
+			$imageStatement->execute($oldImage);
+		}
+		// new images
+		foreach ($new_images as $newKey=>$newImage) {
+			$this->savePortfolioImage($saveid,$newImage);
 		}
 	}
 	

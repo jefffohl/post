@@ -6,6 +6,7 @@ require_once(MODEL_PATH.'Portfolio_Model.php');
 require_once(MODEL_PATH.'PortfolioImage_Model.php');
 require_once(MODEL_PATH.'User_Model.php');
 require_once(MODEL_PATH.'Page_Model.php');
+require_once(CONTROLLER_PATH.'fileUpload.php');
 
 class Admin_Controller {
 	
@@ -16,6 +17,7 @@ class Admin_Controller {
 		$this->portfolioObj = new Portfolio_Model();
 		$this->portfolioimageObj = new PortfolioImage_Model();
 		$this->contentPageObj = new Page_Model();
+		$this->fileUpload = new fileUpload();
 	}
 	
 	public function execute() {
@@ -283,8 +285,37 @@ class Admin_Controller {
 	
 	public function editPortfolio() {
 		global $smarty;
-		if (isset($_POST['saveid'])) {	
-			$this->portfolioObj->editPortfolio($_POST['title'],$_POST['thumbnail'],$_POST['body'],$_POST['categories'],$_POST['images'],$_POST['image_thumbnails'],$_POST['image_descriptions'],$_POST['imageIDs'],$_POST['saveid']);
+		if (isset($_POST['saveid']) && !empty($_POST['title'])) {
+			// strip out all whitespace
+			$portfolioName = preg_replace('/\s*/', '', $_POST['title']);
+			// convert the string to all lowercase
+			$portfolioName = strtolower($portfolioName);
+			
+			// roll up the existing images
+			$existing_images = array();
+			foreach($_POST['existing_images'] as $key=>$value) {
+				$existing_images[$key] = array("id" => $key, "imageurl" => $value, "thumbnail" => $_POST['existing_thumbnails'][$key], "description" => $_POST['existing_descriptions'][$key]);
+			}
+			// check for new imageurls:
+			$updated_images = $this->fileUpload->upload($portfolioName, $_FILES['existing_images']);
+			$updated_thumbnails = $this->fileUpload->upload($portfolioName, $_FILES['existing_thumbnails']);
+			foreach($updated_images as $key=>$value) {
+				$existing_images[$key]["imageurl"] = $value;
+			}
+			foreach($updated_thumbnails as $key=>$value) {
+				$existing_images[$key]["thumbnail"] = $value;
+			}
+
+			// roll up the new images
+			$new_images = array();
+			$new_mainimages = $this->fileUpload->upload($portfolioName, $_FILES['new_images']);
+			$new_thumbnails = $this->fileUpload->upload($portfolioName, $_FILES['new_thumbnails']);
+
+			foreach($new_mainimages as $key=>$value) {
+				$new_images[$key] = array("imageurl" => $value, "thumbnail" => $new_thumbnails[$key], "description" => $_POST["new_descriptions"][$key]);
+			}
+
+			$this->portfolioObj->editPortfolio($_POST['title'],$_POST['thumbnail'],$_POST['body'],$_POST['categories'],$existing_images,$new_images,$_POST['saveid']);
 			/* cleanse the $_POST array */
 			header("Location: ".$_SERVER['PHP_SELF']."?view=saved");
 		}

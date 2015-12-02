@@ -163,7 +163,7 @@ div.post-body {
 div.new_post input#title {
 	width:600px;
 	font-size:14px;
-	}
+}
 	
 .page-body textarea#body {
 	width:650px;
@@ -319,14 +319,15 @@ span.total-records {
 
 #portfolio_images div {
 	margin-bottom:15px;
-	border-bottom:solid 1px #ccc;
-	padding-right:50px;
+	padding-right:70px;
 	position:relative;
 }
 
-#portfolio_images div:first-child {
-	border-top:solid 1px #ccc;
-	padding-top:15px;
+#portfolio_images h2 {
+	background:#666;
+	color:#fff;
+	padding:5px;
+	font-family:"Helvetica", "Helvetica Neue", "Arial", "sans-serif";
 }
 
 #portfolio_images table {
@@ -335,15 +336,19 @@ span.total-records {
 	border:none;
 }
 
+#portfolio_images table tr {
+	border-bottom:solid 1px #ccc;
+}
+
 #portfolio_images table td {
 	vertical-align:top;
-	padding:0 0 10px 0;
+	padding:10px;
 }
 
 #portfolio_images table th {
-	text-align:right;
+	text-align:left;
 	vertical-align:top;
-	padding:0 10px 10px 0;
+	padding:10px;
 	width:15%;
 }
 
@@ -351,10 +356,6 @@ span.total-records {
 	position:absolute;
 	top:0;
 	right:0;
-}
-
-#portfolio_images div:first-child a.delete {
-	top:15px;
 }
 
 #portfolio_images table td input, #portfolio_images table td textarea {
