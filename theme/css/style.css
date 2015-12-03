@@ -149,8 +149,12 @@ div.blog {
 	border-right:solid 1px #111;
 }
 
-div.blog h3 {
+div.blog .post-title {
 	font-size:36px;
+}
+
+div.blog .cv h3 {
+	font-size:20px;
 }
 
 p.author {

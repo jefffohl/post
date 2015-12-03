@@ -1,7 +1,7 @@
 
 	<div class="blog">
 		<div class="single-post">
-			<h3>{$post.title}</h3>
+			<h3 class="post-title">{$post.title}</h3>
 			<p class="date-posted">{$post.date_posted|date_format:"%B %e, %Y @ %l:%M %p"}</p>
 			<div class="post-body">{$post.body}</div>
 		</div>	
