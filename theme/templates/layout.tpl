@@ -15,7 +15,7 @@
 	<div class="highlight">
 		{block name="body_header"}
 		<div class="post-header">
-			<div class="inner"><h1><a href="/">{$blogTitle}</a></h1>
+			<div class="inner"><h1><a href="/">{{$smarty.const.BLOG_AUTHOR}}</a></h1>
 			{pageMenu}
 			{if $loggedin === true}<p class="welcome">Welcome, {$user.firstname}</p>{/if}
 				
