@@ -734,3 +734,30 @@ footer div.copyright {
 .contact ul li:last-child {
 	border-bottom:none;
 }
+
+/* case study */
+
+.case-study img {
+	max-width:100%;
+	border-radius:5px;
+}
+
+.case-study .project-lead {
+	font-size:125%;
+}
+
+.case-study .user-story {
+	font-size:150%;
+	font-family:Georgia, serif;
+	padding:10px;
+	background:rgba(255,255,255,0.1);
+	border-bottom:solid 1px #666;
+	border-radius:3px;
+	line-height:1.1;
+}
+
+.case-study h3 {
+	padding-top:15px;
+	border-top:solid 1px #444;
+}
+
