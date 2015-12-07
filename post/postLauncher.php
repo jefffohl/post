@@ -122,7 +122,7 @@ if (CONTROLLER === 'Post') {
 	}
 	else {
 		$modules = "Blog,Portfolio";
-		$postObj = new PostController($modules,"layout.tpl");
+		$postObj = new PostController($modules,"home.tpl");
 		$postObj->execute();
 	}
 } elseif (CONTROLLER === 'Admin') {
