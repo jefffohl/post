@@ -3,3 +3,4 @@
 post.sql
 *.sublime-project
 *.sublime-workspace
+.htaccess
