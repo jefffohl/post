@@ -1,5 +1,5 @@
-portfolios/
-images/
+/portfolios/
+/images/
 post.sql
 *.sublime-project
 *.sublime-workspace

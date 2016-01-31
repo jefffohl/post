@@ -6,7 +6,8 @@
 		<title>{block nocache name="pagetitle"}{$page.title}{/block}</title>
 		{block name="header_javascript"}{/block}
 		{block name="header_css"}
-		<link href="{$theme_path}css/style.css" media="screen" rel="stylesheet" type="text/css" />
+		<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet' type='text/css'>
+		<link href="{$theme_path}css/style.css" media="screen" rel="stylesheet" type="text/css">
 		{/block}
 	</head>
 {/block}

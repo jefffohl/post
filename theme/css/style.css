@@ -12,11 +12,11 @@ table td {
 body {
 	padding:15px;
 	margin:0;
-	font-family:Arial,sans-serif;
+	font-family:"Roboto",Arial,sans-serif;
 	font-size:14px;
-	background-color:#000;
+	background-color:rgb(19,35,43);
 	color:#fff;
-	background-image:url(/theme/images/highlight.jpg);
+	background-image:url(/theme/images/highlight.png);
 	background-position:center;
 	background-repeat:repeat-y;
 }
@@ -63,19 +63,17 @@ a img {
 }
 
 .post-header h1 {
-	color:#ddd;
-	font-weight:normal;
+	color:rgba(255,255,255,0.75);
 	font-size:45px;
 	/*
 	text-shadow: 2px 2px 7px #666;
 	*/
 	margin:0;
 	padding:0 0 0 20px;
-	text-transform:lowercase;
 }
 
 .post-header h1 a {
-	color:#999;
+	color:rgba(255,255,255,0.75);
 	text-decoration:none;
 }
 
@@ -88,6 +86,7 @@ a img {
 
 h1 {
 	font-size:36px;
+	letter-spacing:-1px;
 }
 
 h2 {
@@ -95,11 +94,19 @@ h2 {
 }
 
 h1,h2,h3,h4,h5,h6 {
-	font-family: "Myriad Pro",Myriad,Arial,sans-serif;
+	font-family: "Roboto",Arial,sans-serif;
 }
 
-h1,h2,h3 {
-	font-weight:normal;
+h1 {
+	font-weight:300;
+}
+
+h2,h3 {
+	font-weight:400;
+}
+
+h4,h5,h6 {
+	font-weight:500;
 }
 
 div.post {
@@ -108,14 +115,14 @@ div.post {
 	margin:0 0 10px 0;
 	color:#fff;
 	border-radius:5px;
-	border-top:solid 1px #444;
-	border-bottom:solid 1px #000;
-	border-left:solid 1px #111;
-	border-right:solid 1px #111;
+	border-top:solid 1px rgba(255,255,255,0.25);
+	border-bottom:solid 1px rgb(0,0,0);
+	border-left:solid 1px rgba(0,0,0,0.5);
+	border-right:solid 1px rgba(0,0,0,0.5);
 }
 
 div.post:hover {
-	background-color:#000;
+	background-color:rgba(0,0,0,0.5);
 	color:#fff;
 }
 
@@ -143,10 +150,10 @@ div.blog {
 	background-color:rgba(0,0,0,0.25);
 	color:#fff;
 	border-radius:5px;
-	border-top:solid 1px #444;
-	border-bottom:solid 1px #000;
-	border-left:solid 1px #111;
-	border-right:solid 1px #111;
+	border-top:solid 1px rgba(255,255,255,0.25);
+	border-bottom:solid 1px rgb(0,0,0);
+	border-left:solid 1px rgba(0,0,0,0.5);
+	border-right:solid 1px rgba(0,0,0,0.5);
 }
 
 div.blog .post-title {
@@ -163,16 +170,16 @@ div.blog .post-body h3 {
 }
 
 p.author {
-	font-weight:bold;
+	font-weight:500;
 	text-transform:uppercase;
-	color:#666;
+	color:rgba(255,255,255,0.75);
 	font-size:11px;
 }
 
 p.date-posted {
 	font-size:12px;
 	font-family:Arial,sans-serif;
-	font-weight:bold;
+	font-weight:500;
 	text-transform:uppercase;
 }
 
@@ -238,19 +245,19 @@ div.my-account {
 	background-color:rgba(0,0,0,0.25);
 	color:#fff;
 	border-radius:5px;
-	border-top:solid 1px #444;
-	border-bottom:solid 1px #000;
-	border-left:solid 1px #111;
-	border-right:solid 1px #111;
+	border-top:solid 1px rgba(255,255,255,0.25);
+	border-bottom:solid 1px rgb(0,0,0);
+	border-left:solid 1px rgba(0,0,0,0.5);
+	border-right:solid 1px rgba(0,0,0,0.5);
 	
 }
 
 a.button, input[type=submit], input[type=button], ul.pager li a {
 	display:inline-block;
 	font-size:12px;
-	font-weight:normal;
+	font-weight:400;
 	font-family:Arial, Helvetica, sans-serif;
-	background:#666;
+	background-color:rgba(255,255,255,0.25);
 	color:#fff;
 	text-shadow:none;
 	-webkit-border-radius:3px;
@@ -316,7 +323,7 @@ table.admin th, table.admin td {
 	background:#444;
 	font-family:Arial, Helvetica, sans-serif;
 	text-transform:uppercase;
-	font-weight:bold;
+	font-weight:500;
 	letter-spacing:2px;
 	-webkit-border-radius:5px;
 	-moz-border-radius:5px;
@@ -352,7 +359,7 @@ div.commentform-container {
 }
 
 .comment .by .comment-author {
-	font-weight:bold;
+	font-weight:500;
 }
 
 .comment-timestamp {
@@ -405,13 +412,13 @@ div.blog-column {
 }
 
 div.blog-column h2, div.portfolio-column h2, h2.module-header {
-	text-transform:lowercase;
-	color:#666;
+	/*text-transform:lowercase;*/
+	color:rgba(255,255,255,0.25);
 	font-size:28px;
 }
 
 div.blog-column h2 a, div.portfolio-column h2 a, h2.module-header a {
-	color:#666;
+	color:rgba(255,255,255,0.25);
 	text-decoration:none;
 }
 
@@ -450,10 +457,10 @@ div.portfolio-preview {
 	background-color:rgba(0,0,0,0.25);
 	color:#fff;
 	border-radius:5px;
-	border-top:solid 1px #444;
-	border-bottom:solid 1px #000;
-	border-left:solid 1px #111;
-	border-right:solid 1px #111;
+	border-top:solid 1px rgba(255,255,255,0.25);
+	border-bottom:solid 1px rgb(0,0,0);
+	border-left:solid 1px rgba(0,0,0,0.5);
+	border-right:solid 1px rgba(0,0,0,0.5);
 }
 
 div.portfolio-preview a {
@@ -472,7 +479,7 @@ div.portfolio-preview img {
 }
 
 div.portfolio-preview:hover {
-	background-color:#000;
+	background-color:rgba(0,0,0,0.5);
 }
 
 div.portfolio-preview:hover a {
@@ -663,7 +670,7 @@ ul.content-page-menu li a, .admin-buttons a.button {
 	padding:5px 10px;
 	color:#fff;
 	background:rgba(0,0,0,0.25);
-	border-bottom:solid 1px #444;
+	border-bottom:solid 1px rgba(255,255,255,0.25);
 }
 
 ul.content-page-menu li a:hover, .admin-buttons a.button:hover {
@@ -750,14 +757,14 @@ footer div.copyright {
 	font-size:150%;
 	font-family:Georgia, serif;
 	padding:10px;
-	background:rgba(255,255,255,0.1);
-	border-bottom:solid 1px #666;
+	background:rgba(255,255,255,0.05);
+	border-bottom:solid 1px rgba(255,255,255,0.25);
 	border-radius:3px;
 	line-height:1.1;
 }
 
 .case-study h3 {
 	padding-top:15px;
-	border-top:solid 1px #444;
+	border-top:solid 1px rgba(255,255,255,0.25);
 }
 
