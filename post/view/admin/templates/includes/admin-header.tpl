@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<title>Post Admin</title>
 	</head>
+	<meta charset="utf-8">
 	<link href="{$app_path}view/admin/css/admin-style.css" media="screen" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="{$app_path}view/admin/js/ckeditor/ckeditor.js"></script>
 	<script type="text/javascript" src="{$app_path}view/admin/js/jquery.min.js"></script>
