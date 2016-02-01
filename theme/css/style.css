@@ -83,18 +83,11 @@ a img {
 h1 {
 	font-size:36px;
 	letter-spacing:-1px;
+	font-weight:300;
 }
 
 h2 {
 	font-size:24px;
-}
-
-h1,h2,h3,h4,h5,h6 {
-	font-family: "Roboto",Arial,sans-serif;
-}
-
-h1 {
-	font-weight:300;
 }
 
 h2,h3 {
@@ -174,7 +167,6 @@ p.author {
 
 p.date-posted {
 	font-size:12px;
-	font-family:Arial,sans-serif;
 	font-weight:500;
 	text-transform:uppercase;
 }
@@ -252,7 +244,6 @@ a.button, input[type=submit], input[type=button], ul.pager li a {
 	display:inline-block;
 	font-size:12px;
 	font-weight:400;
-	font-family:Arial, Helvetica, sans-serif;
 	background-color:rgba(255,255,255,0.25);
 	color:#fff;
 	text-shadow:none;
@@ -317,7 +308,6 @@ table.admin th, table.admin td {
 	line-height:30px;
 	color:#000;
 	background:#444;
-	font-family:Arial, Helvetica, sans-serif;
 	text-transform:uppercase;
 	font-weight:500;
 	letter-spacing:2px;
@@ -381,7 +371,6 @@ form#commentform textarea {
 	border:none;
 	background:#444;
 	color:#fff;
-	font-family:Helvetica,Arial,sans-serif;
 }
 
 form#commentform textarea:focus, form#commentform textarea:active {
@@ -607,7 +596,6 @@ div.filters {
 	position:absolute;
 	top:0;
 	right:0;
-	font-family:Helvetica,Arial,sans-serif;
 	text-shadow:none;
 	color:rgba(255,255,255,0.75);
 	text-transform:none;
