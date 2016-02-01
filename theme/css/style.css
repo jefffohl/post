@@ -626,6 +626,10 @@ div.blog-column-solo {
 	max-width:100%;
 }
 
+div.blog-column-solo img {
+	max-width:100%;
+}
+
 ul.content-page-menu {
  	overflow:hidden;
 	list-style:none;
