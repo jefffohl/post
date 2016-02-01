@@ -38,10 +38,6 @@ a img {
 	border:none;
 }
 
-.highlight {
-	
-}
-
 .page-body {
 	position:relative;
 	overflow:hidden;
@@ -613,7 +609,7 @@ div.filters {
 	right:0;
 	font-family:Helvetica,Arial,sans-serif;
 	text-shadow:none;
-	color:#999;
+	color:rgba(255,255,255,0.75);
 	text-transform:none;
 	font-size:24px;
 }
@@ -635,13 +631,11 @@ div.filters a.button:hover {
 
 /* blog column solo */
 
-div.blog-column-solo div.blog {
-	
-}
 
 div.blog-column-solo {
-	width:700px;
+	width:1024px;
 	margin:auto;
+	max-width:100%;
 }
 
 ul.content-page-menu {
@@ -697,7 +691,7 @@ ul.content-page-menu li.current-page a {
 
 footer {
 	padding-top:20px;
-	color:#999;
+	color:rgba(255,255,255,0.75);
 }
 
 footer a.powered-by-post {
@@ -723,7 +717,8 @@ footer div.copyright {
 /* contact */
 
 .contact.narrow {
-	width:700px;
+	max-width:100%;
+	width:1024px;
 	margin:auto;
 }
 
