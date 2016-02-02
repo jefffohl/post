@@ -817,6 +817,7 @@ footer div.copyright {
     }
     .post-header .inner h1 {
     	padding-left:15px;
+    	margin:0.2em 0;
     }
     div.blog {
     	padding:0;
@@ -842,24 +843,7 @@ footer div.copyright {
 		overflow:visible;
 	}
 
-	div.portfolio-preview {
-		float:none;
-		margin:0 -15px 10px -15px;
-		overflow:hidden;
-		width:auto;
-		height:auto;
-		border-radius:0;
-		border-left:none;
-		border-right:none;
-	}
-
-	div.portfolio-preview img {
-		display:inline-block;
-		height:auto;
-		width:auto;
-		max-width:100%;
-		border-radius:3px;
-	}
+	
 
 	/* portfolio page */
 
@@ -918,6 +902,25 @@ footer div.copyright {
 
 	div.portfolio div.description-wrapper div.thumbnails div.thumbnail {
 		margin-right:8px;
+	}
+
+	div.portfolio-preview {
+		float:none;
+		margin:0 -15px 10px -15px;
+		overflow:hidden;
+		width:auto;
+		height:auto;
+		border-radius:0;
+		border-left:none;
+		border-right:none;
+	}
+
+	div.portfolio-preview img {
+		display:inline-block;
+		height:auto;
+		width:auto;
+		max-width:100%;
+		border-radius:3px;
 	}
 }
 
