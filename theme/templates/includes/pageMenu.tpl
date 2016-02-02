@@ -1,4 +1,10 @@
-<div class="menu-wrapper">
+<div class="hamburger" id="menu-controller">
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+</div>
+<div class="menu-wrapper" id="menu">
 	<ul class="content-page-menu">
 		<li {if $_GET.view == 'blog'} class="current-page"{/if}><a href="/?view=blog">Blog</a></li>
 		<li {if $_GET.view == 'portfolio'} class="current-page"{/if}><a href="/?view=portfolio">Portfolio</a></li>
@@ -17,14 +23,5 @@
 				{/if}
 			{/if}
 		{/if}
-		{*
-		{else}
-			{if $_CONTROLLER == "Account"}
-			<li>	<a href="/">Back to site &raquo;</a></li>
-			{else}
-			<li>	<a href="/account/">Log In &raquo;</a></li>
-			{/if}
-		{/if}
-		*}
 	</ul>
 </div>

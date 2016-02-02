@@ -1,6 +1,4 @@
-<script type="text/javascript" src="/post/view/admin/js/jquery.min.js"></script>
 <script type="text/javascript" src="/theme/js/PostShadowbox.js"></script>
-
 {assign var="categories" value=","|explode:$portfolio.categories}
 <div class="portfolio">
 	<div id="description-wrapper" class="description-wrapper">

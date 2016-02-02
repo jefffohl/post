@@ -637,12 +637,50 @@ div.blog-column-solo img {
 	max-width:100%;
 }
 
+#menu-controller {
+	display:none;
+}
+
+div.hamburger {
+	position:absolute;
+	top:5px;
+	right:15px;
+	padding:7px;
+	border-radius:3px;
+	cursor: pointer;
+	width:25px;
+	height:25px;
+	background:rgba(255,255,255,0.2);
+}
+
+div.hamburger.open {
+	background:rgba(0,0,0,0.2);
+}
+
+div.hamburger.open span {
+	background:rgba(255,255,255,0.75);
+}
+
+div.hamburger span {
+	height:2px;
+	display:block;
+	width:100%;
+	margin-bottom:5px;
+	background:rgba(255,255,255,0.5);
+}
+
 div.menu-wrapper {
 	text-align:center;
 	width:100%;
 	position:absolute;
 	top:0;
 	left:0;
+	height:0;
+	transition: height 1s ease;
+}
+
+div.menu-wrapper.open {
+	height:auto;
 }
 
 ul.content-page-menu {
@@ -788,6 +826,10 @@ footer div.copyright {
 
     .post-header {
     	border-radius:0;
+    }
+
+    #menu-controller {
+    	display:block;
     }
 
     div.menu-wrapper {
