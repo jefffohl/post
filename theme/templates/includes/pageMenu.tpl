@@ -2,7 +2,6 @@
 	<span></span>
 	<span></span>
 	<span></span>
-	<span></span>
 </div>
 <div class="menu-wrapper" id="menu">
 	<ul class="content-page-menu">
