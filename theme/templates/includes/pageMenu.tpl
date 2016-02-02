@@ -1,7 +1,9 @@
 <ul class="content-page-menu">
-{foreach from=$contentpages key="key" item="page"}
-<li{if $_GET.contentpageid == $page.id} class="current-page"{/if}><a href="/?view=page&contentpageid={$page.id}">{$page.title}</a></li>
-{/foreach}
+	<li {if $_GET.view == 'blog'} class="current-page"{/if}><a href="/?view=blog">Blog</a></li>
+	<li {if $_GET.view == 'portfolio'} class="current-page"{/if}><a href="/?view=portfolio">Portfolio</a></li>
+	{foreach from=$contentpages key="key" item="page"}
+	<li{if $_GET.contentpageid == $page.id} class="current-page"{/if}><a href="/?view=page&contentpageid={$page.id}">{$page.title}</a></li>
+	{/foreach}
 {if $loggedin === true}
 	{if $_CONTROLLER == "Account"}
 	<li>	<a href="/">Back to site &raquo;</a></li>
