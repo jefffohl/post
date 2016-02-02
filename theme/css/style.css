@@ -775,19 +775,23 @@ footer div.copyright {
     	padding:0 15px;
     }
 
+    .post-header {
+    	border-radius:0;
+    }
+
     ul.content-page-menu {
 		margin:0;
 		padding:0;
 		position:static;
 		width:auto;
 		text-align:left;
-		border-bottom:solid 1px rgba(255,255,255,0.25);
 	}
 
 	ul.content-page-menu li {
 		display:block;
 		padding:0;
 		margin-right:0;
+		border-top:solid 1px rgba(255,255,255,0.25);
 	}
 
 	ul.content-page-menu li a, .admin-buttons a.button {
@@ -796,7 +800,6 @@ footer div.copyright {
 		padding:7px 15px;
 		color:rgba(255,255,255,0.75);
 		background:rgba(0,0,0,0.25);
-		border-top:solid 1px rgba(255,255,255,0.25);
 		border-bottom:none;
 	}
 
@@ -805,11 +808,14 @@ footer div.copyright {
 		background:rgba(0,0,0,0.5);
 	}
 
+	ul.content-page-menu li:last-child {
+		border-bottom:solid 1px rgba(255,255,255,0.25);
+	}
+
 	ul.content-page-menu li.current-page a {
 		background-color:#000;
 		border-bottom:none;
 		color:#fff;
-		border-top:solid 1px rgba(255,255,255,0.35);
 	}
 
     .post-header .inner {
@@ -913,13 +919,16 @@ footer div.copyright {
 		border-radius:0;
 		border-left:none;
 		border-right:none;
+		text-align:left;
 	}
 
 	div.portfolio-preview img {
 		display:inline-block;
+		max-width:60%;
+		float:left;
+		margin-right:10px;
 		height:auto;
 		width:auto;
-		max-width:100%;
 		border-radius:3px;
 	}
 }
